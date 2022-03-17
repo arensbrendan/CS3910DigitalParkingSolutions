@@ -1,22 +1,18 @@
 <title>Digital Parking Solutions</title>
 <body>
 <mat-toolbar class="toolbar" color="primary">
-  Digital Parking Solutions
+  <a class="nav-icon" routerLink="">Digital Parking Solutions</a>
   <div class="icons">
-    <span class="nav-icon">Park <mat-icon>location_city</mat-icon></span>
-    <span class="nav-icon">Check Availability <mat-icon>calendar_today</mat-icon></span>
-    <span class="nav-icon">Change Reservation <mat-icon>edit_calendar</mat-icon></span>
+    <a class="nav-icon" routerLink="park">Park
+      <mat-icon>location_city</mat-icon>
+    </a>
+    <a class="nav-icon" routerLink="look">Check Availability
+      <mat-icon>calendar_today</mat-icon>
+    </a>
+    <a class="nav-icon" routerLink="edit">Change Reservation
+      <mat-icon>edit_calendar</mat-icon>
+    </a>
   </div>
 </mat-toolbar>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Welcome to Digital Parking Solutions</mat-card-title>
-    <mat-card-subtitle>You can reserve parking spots, check availability, and cancel reservations here
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content class="center">
-    <img
-      src="https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2021/05/931/524/iStock-472933698.jpg?ve=1&tl=1">
-  </mat-card-content>
-</mat-card>
+<router-outlet></router-outlet>
 </body>

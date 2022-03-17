@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.mat-toolbar-single-row {
+  padding: 0 !important;
+}
+
 .icons {
   width: 75%;
   display: flex;
@@ -19,15 +23,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-}
-
-.center {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.mat-toolbar-single-row {
-  padding: 0 !important;
+  text-decoration: none;
+  color: white;
 }
