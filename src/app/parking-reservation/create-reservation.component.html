@@ -1,9 +1,84 @@
-<mat-card>
+<body class="body">
+<mat-card class="two-card">
   <mat-card-header>
     <mat-card-title>Create Your Reservation</mat-card-title>
     <mat-card-subtitle>With some quick information input, we create your reservation!</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content class="center">
-    mt 4 now
+  <hr>
+  <mat-card-content>
+    <div class="input-row">
+      <mat-form-field class="input-field">
+        <input [(ngModel)]="name" class="input-box" matInput matTooltip="Your name" placeholder="Name">
+      </mat-form-field>
+
+      <mat-form-field class="input-field">
+        <input [(ngModel)]="make" class="input-box" matInput matTooltip="Your car's make (eg. Toyota, GMC, Jeep)"
+               placeholder="Make">
+      </mat-form-field>
+
+      <mat-form-field class="input-field">
+        <input [(ngModel)]="model" class="input-box" matInput
+               matTooltip="Your car's model (eg. Camry, Wrangler, F150)" placeholder="Model">
+      </mat-form-field>
+    </div>
+
+    <div class="input-row">
+      <mat-form-field class="input-field">
+        <input [(ngModel)]="color" class="input-box" matInput matTooltip="Your car's color" placeholder="Color">
+      </mat-form-field>
+
+      <mat-form-field class="license">
+        <input [(ngModel)]="plate" class="input-box" matInput matTooltip="Your car's license plate"
+               placeholder="License plate">
+      </mat-form-field>
+    </div>
+    <div class="input-row">
+      <span class="one-day-toggle">
+        <mat-label>One Day</mat-label>
+        <mat-slide-toggle [(ngModel)]="oneDay" color="primary"></mat-slide-toggle>
+      </span>
+      <mat-form-field class="input-field">
+        <mat-label>Choose a date</mat-label>
+        <input [(ngModel)]="date1" [matDatepicker]="picker1" matInput>
+        <mat-datepicker-toggle [for]="picker1" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="input-field">
+        <mat-label>Choose a date</mat-label>
+        <input [(ngModel)]="date2" [disabled]="oneDay" [matDatepicker]="picker2" matInput>
+        <mat-datepicker-toggle [disabled]="oneDay" [for]="picker2" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker2 [disabled]="oneDay"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <hr>
+  <mat-card-actions class="card-actions">
+    <button color="primary" mat-raised-button>Create Reservation</button>
+    <button color="primary" mat-raised-button>Cancel</button>
+  </mat-card-actions>
+
+</mat-card>
+<mat-card class="two-card">
+  <mat-card-header>
+    <mat-card-title>Your Ticket</mat-card-title>
+    <mat-card-subtitle>Preview of What your ticket will look like</mat-card-subtitle>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <div class="ticket-row">
+      <span class="ticket-box-1">Name: {{name}}</span>
+      <span class="ticket-box-1">Spot Number: XXXXX</span>
+    </div>
+    <div class="ticket-row">
+      <span class="ticket-box-1">Paid: Y/N</span>
+      <span class="ticket-box-1">Date: {{getDate()}}</span>
+    </div>
+    <div class="ticket-row">
+      <span class="ticket-box-2">Make: {{make}}</span>
+      <span class="ticket-box-2">Model: {{model}}</span>
+      <span class="ticket-box-2">Color: {{color}}</span>
+      <span class="ticket-box-2">Plate: {{plate}}</span>
+    </div>
   </mat-card-content>
 </mat-card>
+</body>

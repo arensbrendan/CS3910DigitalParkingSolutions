@@ -10,6 +10,15 @@ import {CreateReservationComponent} from './parking-reservation/create-reservati
 import {AppRoutingModule} from './app-routing.module';
 import {EditReservationComponent} from './edit-reservation/edit-reservation.component';
 import {CheckAvailiabilityComponent} from './check-availiability/check-availiability.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatButtonModule} from "@angular/material/button";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule} from "@angular/forms";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -24,9 +33,19 @@ import {CheckAvailiabilityComponent} from './check-availiability/check-availiabi
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
