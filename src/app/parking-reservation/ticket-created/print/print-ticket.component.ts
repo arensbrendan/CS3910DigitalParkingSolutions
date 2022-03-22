@@ -1,22 +1,25 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {ConfirmedTicketComponent} from "./confirmed-ticket/confirmed-ticket.component";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-ticket-created',
-  templateUrl: './ticket-created.component.html',
-  styleUrls: ['./ticket-created.component.css']
+  templateUrl: './print-ticket.component.html',
+  styleUrls: ['./print-ticket.component.css']
 })
-export class TicketCreatedComponent implements OnInit {
-  buttonsDisabled = true;
+export class PrintTicketComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              public dialog: MatDialog,
-              private thisDialog: MatDialogRef<TicketCreatedComponent>
+              private thisDialog: MatDialogRef<PrintTicketComponent>
   ) {
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      window.print();
+      setTimeout(() => {
+        this.thisDialog.close(true);
+      }, 1)
+    }, 100)
   }
 
   dateToString(date: any): String {
@@ -41,19 +44,5 @@ export class TicketCreatedComponent implements OnInit {
         return this.dateToString(this.data.date1) + " - " + this.dateToString(this.data.date2);
       }
     }
-  }
-
-  save() {
-    this.buttonsDisabled = true;
-    let dialogRef = this.dialog.open(ConfirmedTicketComponent, {
-      width: '100%',
-      data: this.data
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.thisDialog.close()
-    }, error => {
-      this.thisDialog.close()
-    })
   }
 }

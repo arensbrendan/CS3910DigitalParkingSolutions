@@ -1,0 +1,6 @@
+<div mat-dialog-title>Your ticket has been created</div>
+<div mat-card-subtitle>You can Print it now, and Print or Edit it anytime on the Change Reservation screen</div>
+<mat-dialog-actions class="card-actions">
+  <button (click)="print()" color="primary" mat-raised-button>Print</button>
+  <button [mat-dialog-close]="false" color="primary" mat-raised-button>Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,25 @@
+.ticket-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+hr {
+  border: 2px dashed black;
+  border-bottom: none;
+  margin: 5%;
+  width: 75%;
+}
+
+.print-ticket-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 5.5ch;
+}
+
+.bold {
+  font-weight: bolder;
+}

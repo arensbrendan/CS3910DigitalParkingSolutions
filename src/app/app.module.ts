@@ -21,6 +21,10 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {TicketCreatedComponent} from './parking-reservation/ticket-created/ticket-created.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {PrintTicketComponent} from "./parking-reservation/ticket-created/print/print-ticket.component";
+import {
+  ConfirmedTicketComponent
+} from './parking-reservation/ticket-created/confirmed-ticket/confirmed-ticket.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     CreateReservationComponent,
     EditReservationComponent,
     CheckAvailiabilityComponent,
-    TicketCreatedComponent
+    TicketCreatedComponent,
+    PrintTicketComponent,
+    ConfirmedTicketComponent
   ],
   imports: [
     BrowserModule,
