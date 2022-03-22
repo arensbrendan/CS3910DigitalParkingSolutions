@@ -1,0 +1,25 @@
+<div mat-dialog-title>Review Your Ticket</div>
+<hr>
+<div mat-dialog-content>
+  <div class="">
+    <div class="ticket-row">
+      <span class="ticket-box-1">Name: {{data.name}}</span>
+      <span class="ticket-box-1">Spot Number: XXXXX</span>
+    </div>
+    <div class="ticket-row">
+      <span class="ticket-box-1">Paid: Y/N</span>
+      <span class="ticket-box-1">Date: {{getDate()}}</span>
+    </div>
+    <div class="ticket-row">
+      <span class="ticket-box-2">Make: {{data.make}}</span>
+      <span class="ticket-box-2">Model: {{data.model}}</span>
+      <span class="ticket-box-2">Color: {{data.color}}</span>
+      <span class="ticket-box-2">Plate: {{data.plate}}</span>
+    </div>
+  </div>
+</div>
+<hr>
+<mat-dialog-actions class="card-actions">
+  <button [mat-dialog-close]="false" color="primary" mat-raised-button>Print</button>
+  <button [mat-dialog-close]="false" color="primary" mat-raised-button>Go Back</button>
+</mat-dialog-actions>

@@ -19,6 +19,8 @@ import {FormsModule} from "@angular/forms";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {TicketCreatedComponent} from './parking-reservation/ticket-created/ticket-created.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     LandingPageComponent,
     CreateReservationComponent,
     EditReservationComponent,
-    CheckAvailiabilityComponent
+    CheckAvailiabilityComponent,
+    TicketCreatedComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

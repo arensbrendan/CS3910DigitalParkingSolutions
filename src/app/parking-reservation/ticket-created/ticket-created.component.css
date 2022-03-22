@@ -1,0 +1,70 @@
+.card-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-field {
+  width: 30%;
+}
+
+.license {
+  width: 63%;
+}
+
+.input-box {
+  display: flex;
+  width: 100%;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.two-card {
+  width: 48%;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100% !important;
+}
+
+.ticket-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inconsolata', monospace;
+  padding-top: 2%;
+}
+
+.ticket-box-1 {
+  width: 48%;
+}
+
+.ticket-box-2 {
+  width: 22%;
+}
+
+.one-day-toggle {
+  display: flex;
+  width: 30%;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}

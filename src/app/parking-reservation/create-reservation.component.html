@@ -53,8 +53,8 @@
   </mat-card-content>
   <hr>
   <mat-card-actions class="card-actions">
-    <button color="primary" mat-raised-button>Create Reservation</button>
-    <button color="primary" mat-raised-button>Cancel</button>
+    <button (click)="save()" [disabled]="buttonsDisabled" color="primary" mat-raised-button>Create Reservation</button>
+    <button (click)="cancel()" [disabled]="buttonsDisabled" color="primary" mat-raised-button>Cancel</button>
   </mat-card-actions>
 
 </mat-card>
