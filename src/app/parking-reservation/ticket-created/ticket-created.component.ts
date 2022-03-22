@@ -46,7 +46,7 @@ export class TicketCreatedComponent implements OnInit {
   save() {
     this.buttonsDisabled = true;
     let dialogRef = this.dialog.open(ConfirmedTicketComponent, {
-      width: '100%',
+      width: '50%',
       data: this.data
     });
 

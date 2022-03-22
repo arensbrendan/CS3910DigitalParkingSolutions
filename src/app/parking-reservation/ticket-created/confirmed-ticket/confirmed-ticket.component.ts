@@ -19,7 +19,7 @@ export class ConfirmedTicketComponent implements OnInit {
   }
 
   print() {
-    let dialogRef = this.dialog.open(PrintTicketComponent, {
+    this.dialog.open(PrintTicketComponent, {
       width: '100%',
       height: '100%',
       data: this.data
