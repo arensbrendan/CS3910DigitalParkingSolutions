@@ -25,6 +25,7 @@ import {PrintTicketComponent} from "./parking-reservation/ticket-created/print/p
 import {
   ConfirmedTicketComponent
 } from './parking-reservation/ticket-created/confirmed-ticket/confirmed-ticket.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

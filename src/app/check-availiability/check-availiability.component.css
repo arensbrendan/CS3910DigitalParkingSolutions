@@ -1,0 +1,21 @@
+.pink {
+  background-color: pink;
+  margin: 1%;
+}
+
+.car-icon-even {
+  border: 1px solid black;
+  border-bottom: none;
+  margin: 0;
+}
+
+
+.car-icon-odd {
+  border: 1px solid black;
+  border-top: none;
+  margin: 1% 0 0;
+}
+
+.show {
+  color: white;
+}
