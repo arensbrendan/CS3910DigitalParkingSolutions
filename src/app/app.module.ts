@@ -26,6 +26,7 @@ import {
   ConfirmedTicketComponent
 } from './parking-reservation/ticket-created/confirmed-ticket/confirmed-ticket.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatNativeDateModule,
     MatSlideToggleModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
