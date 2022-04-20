@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-check-availiability',
@@ -7,8 +8,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CheckAvailiabilityComponent implements OnInit {
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   parkingSpaces: Array<Array<Array<boolean>>> | undefined;
-  constructor() {
+  constructor(
+    private http: HttpClient,
+  ) {
   }
 
   ngOnInit(): void {
@@ -23,6 +30,10 @@ export class CheckAvailiabilityComponent implements OnInit {
         }
       }
     }
+    /*this.http.get<any>("http://localhost:8080").subscribe(spots =>{
+      console.log(spots);
+    });*/
+
 
   }
 
