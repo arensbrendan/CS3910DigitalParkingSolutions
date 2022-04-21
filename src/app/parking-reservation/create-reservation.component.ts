@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
+import { Reservation } from '../app.component';
 import {TicketCreatedComponent} from "./ticket-created/ticket-created.component";
 
 @Component({
@@ -9,17 +10,22 @@ import {TicketCreatedComponent} from "./ticket-created/ticket-created.component"
 })
 export class CreateReservationComponent implements OnInit {
 
-  name = "";
-  make = "";
-  model = "";
-  color = "";
-  plate = "";
-  date1: Date | undefined;
-  date2: Date | undefined;
-  oneDay: boolean = true;
+  reservation: Reservation = {
+    color: "",
+    endDate: undefined,
+    licensePlate: "",
+    make: "",
+    model: "",
+    oneDay: true,
+    startDate: undefined,
+    spotNumber: 0,
+    name: ""
+  };
+
   buttonsDisabled: boolean = false;
 
   constructor(public dialog: MatDialog) {
+
   }
 
   ngOnInit(): void {
@@ -34,17 +40,17 @@ export class CreateReservationComponent implements OnInit {
   }
 
   getDate(): String {
-    if (this.oneDay) {
-      return this.dateToString(this.date1);
+    if (this.reservation.oneDay) {
+      return this.dateToString(this.reservation.startDate);
     } else {
-      if (this.date1 == undefined && this.date2 == undefined) {
+      if (this.reservation.startDate == undefined && this.reservation.endDate == undefined) {
         return "";
-      } else if (this.date1 == undefined && this.date2 != undefined) {
-        return this.dateToString(this.date2);
-      } else if (this.date2 == undefined && this.date1 != undefined) {
-        return this.dateToString(this.date1);
+      } else if (this.reservation.startDate == undefined && this.reservation.endDate != undefined) {
+        return this.dateToString(this.reservation.endDate);
+      } else if (this.reservation.endDate == undefined && this.reservation.startDate != undefined) {
+        return this.dateToString(this.reservation.startDate);
       } else {
-        return this.dateToString(this.date1) + " - " + this.dateToString(this.date2);
+        return this.dateToString(this.reservation.startDate) + " - " + this.dateToString(this.reservation.endDate);
       }
     }
   }
@@ -54,14 +60,14 @@ export class CreateReservationComponent implements OnInit {
     let dialogRef = this.dialog.open(TicketCreatedComponent, {
       width: '75%',
       data: {
-        name: this.name,
-        make: this.make,
-        model: this.model,
-        color: this.color,
-        plate: this.plate,
-        date1: this.date1,
-        date2: this.date2,
-        oneDay: this.oneDay,
+        name: this.reservation.name,
+        make: this.reservation.make,
+        model: this.reservation.model,
+        color: this.reservation.color,
+        plate: this.reservation.licensePlate,
+        date1: this.reservation.startDate,
+        date2: this.reservation.endDate,
+        oneDay: this.reservation.oneDay,
 
       }
     });
@@ -81,14 +87,14 @@ export class CreateReservationComponent implements OnInit {
   cancel() {
     this.buttonsDisabled = true;
 
-    this.name = "";
-    this.make = "";
-    this.model = "";
-    this.color = "";
-    this.plate = "";
-    this.date1 = undefined;
-    this.date2 = undefined;
-    this.oneDay = true;
+    this.reservation.name = "";
+    this.reservation.make = "";
+    this.reservation.model = "";
+    this.reservation.color = "";
+    this.reservation.licensePlate = "";
+    this.reservation.startDate = undefined;
+    this.reservation.endDate = undefined;
+    this.reservation.oneDay = true;
 
     this.buttonsDisabled = false;
 
