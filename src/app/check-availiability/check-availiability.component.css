@@ -22,7 +22,8 @@
   color: white;
 }
 .row-label {
-  margin-bottom: 4px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.5ch;
 }
 
 .space {
