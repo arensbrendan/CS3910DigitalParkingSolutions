@@ -33,9 +33,9 @@ export class CreateReservationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkRequirements(){
-    if(this.reservation.licensePlate.length == 7 && this.reservation.startDate != undefined && this.reservation.name.length >= 1 && this.reservation.color.length >= 1
-       && this.reservation.make.length >= 1 && this.reservation.model.length >= 1)
+  checkRequirements() {
+    if (this.reservation.licensePlate.length == 7 && this.reservation.startDate != undefined && this.reservation.name.length >= 1 && this.reservation.color.length >= 1
+      && this.reservation.make.length >= 1 && this.reservation.model.length >= 1)
       return false;
     else
       return true;
@@ -112,23 +112,18 @@ export class CreateReservationComponent implements OnInit {
 
       let found = false;
       for (let i = 0; i < 5; i++) {
-        if (found) {
+        if (found || this.parkingSpaces == undefined || this.parkingSpaces[i] == undefined) {
           break;
         }
         for (let j = 0; j < 10; j++) {
-          if (found) {
+          if (found || this.parkingSpaces[i][j] == undefined) {
             break;
           }
           for (let k = 0; k < 20; k++) {
-            if (found) {
-              break;
-            }
-            if (!!(this.parkingSpaces) && this.parkingSpaces[i][j][k]) {
-              if (this.parkingSpaces) {
-                this.parkingSpaces[i][j][k] = true;
-                console.log("Found spot at ", i, j, k)
-              }
+            if (!(found || this.parkingSpaces[i][j][k] == undefined) && !this.parkingSpaces[i][j][k]) {
+              this.parkingSpaces[i][j][k] = true;
               found = true;
+              this.reservation.spotNumber = this.getSpotNumber(i, j, k);
             }
           }
         }
@@ -141,6 +136,7 @@ export class CreateReservationComponent implements OnInit {
           model: this.reservation.model,
           color: this.reservation.color,
           plate: this.reservation.licensePlate,
+          spotNumber: this.reservation.spotNumber,
           date1: this.reservation.startDate,
           date2: this.reservation.endDate,
           oneDay: this.reservation.oneDay,
@@ -150,7 +146,8 @@ export class CreateReservationComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          this.buttonsDisabled = true;
+          localStorage.setItem('dataSource', JSON.stringify(this.parkingSpaces));
+          this.buttonsDisabled = false;
         } else {
           this.buttonsDisabled = false;
         }
@@ -177,4 +174,31 @@ export class CreateReservationComponent implements OnInit {
 
   }
 
+
+  getSpotNumber(i: number, j: number, k: number): string {
+    let returnString = '';
+    switch (i) {
+      case  0:
+        returnString += 'A';
+        break;
+      case  1:
+        returnString += 'B';
+        break;
+      case  2:
+        returnString += 'C';
+        break;
+      case  3:
+        returnString += 'D';
+        break;
+      case  4:
+        returnString += 'E';
+        break;
+      default:
+        returnString += "Z";
+    }
+    returnString += j.toString();
+    returnString += (k >= 10 ? k.toString() : "0" + k.toString());
+    return returnString;
+
+  }
 }

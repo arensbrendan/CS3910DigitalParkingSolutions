@@ -51,9 +51,9 @@ export class TicketCreatedComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.thisDialog.close()
+      this.thisDialog.close(true)
     }, error => {
-      this.thisDialog.close()
+      this.thisDialog.close(false)
     })
   }
 }
