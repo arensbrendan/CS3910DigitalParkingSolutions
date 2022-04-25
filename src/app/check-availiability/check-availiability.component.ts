@@ -13,6 +13,7 @@ export class CheckAvailiabilityComponent implements OnInit {
   };
 
   parkingSpaces: Array<Array<Array<boolean>>> | undefined;
+  floors: String[] = ["A", "B", "C", "D", "E"];
 
   constructor(
     private http: HttpClient,
