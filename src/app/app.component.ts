@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+
 // import * as internal from 'stream';  this broke for me when I opened the file, or maybe I copied it and don't remember - Clay
 
 @Component({
@@ -41,13 +42,13 @@ export type Reservation = {
   /**
    * start date of reservation
    */
-  startDate : Date | undefined;
+  startDate: Date | undefined;
   /**
    * end date of reservation
    */
-  endDate : Date | undefined;
+  endDate: Date | undefined;
   /**
    * Spot number in the garage
    */
-  spotNumber : number;
+  spotNumber: string;
 }

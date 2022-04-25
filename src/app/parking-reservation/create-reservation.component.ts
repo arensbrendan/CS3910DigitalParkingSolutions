@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import { Reservation } from '../app.component';
-import { CantCreateComponent } from './cant-create/cant-create.component';
+import {Reservation} from '../app.component';
+import {CantCreateComponent} from './cant-create/cant-create.component';
 import {TicketCreatedComponent} from "./ticket-created/ticket-created.component";
 
 @Component({
@@ -19,10 +19,11 @@ export class CreateReservationComponent implements OnInit {
     model: "",
     oneDay: true,
     startDate: undefined,
-    spotNumber: 87,
+    spotNumber: "",
     name: ""
   };
 
+  parkingSpaces: Array<Array<Array<boolean>>> | undefined;
   buttonsDisabled: boolean = false;
 
   constructor(public dialog: MatDialog) {
@@ -32,9 +33,9 @@ export class CreateReservationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkRequirements(){
-    if(this.reservation.licensePlate.length == 7 && this.reservation.startDate != undefined && this.reservation.name.length < 1 && this.reservation.color.length < 1
-       && this.reservation.make.length < 1 && this.reservation.model.length < 1)
+  checkRequirements() {
+    if (this.reservation.licensePlate.length == 7 && this.reservation.startDate != undefined && this.reservation.name.length < 1 && this.reservation.color.length < 1
+      && this.reservation.make.length < 1 && this.reservation.model.length < 1)
       return false;
     else
       return true;
@@ -66,7 +67,7 @@ export class CreateReservationComponent implements OnInit {
 
   save() {
     this.buttonsDisabled = true;
-    if(this.checkRequirements()){
+    if (this.checkRequirements()) {
       let dialogRef = this.dialog.open(CantCreateComponent, {
         width: '75%',
         data: {
@@ -90,35 +91,76 @@ export class CreateReservationComponent implements OnInit {
       }, error => {
         this.buttonsDisabled = false;
       })
-    }
-    else{
-    let dialogRef = this.dialog.open(TicketCreatedComponent, {
-      width: '75%',
-      data: {
-        name: this.reservation.name,
-        make: this.reservation.make,
-        model: this.reservation.model,
-        color: this.reservation.color,
-        plate: this.reservation.licensePlate,
-        date1: this.reservation.startDate,
-        date2: this.reservation.endDate,
-        oneDay: this.reservation.oneDay,
+    } else {
 
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.buttonsDisabled = true;
+      let JsonString = localStorage.getItem('dataSource');
+      if (JsonString === undefined || JsonString == null) {
+        this.parkingSpaces = [];
+        for (let i = 0; i < 5; i++) {
+          this.parkingSpaces[i] = [];
+          for (let j = 0; j < 10; j++) {
+            this.parkingSpaces[i][j] = [];
+            for (let k = 0; k < 20; k++) {
+              this.parkingSpaces[i][j][k] = Math.random() < 0.5;
+            }
+          }
+        }
+        localStorage.setItem('dataSource', JSON.stringify(this.parkingSpaces));
       } else {
-        this.buttonsDisabled = false;
+        this.parkingSpaces = JSON.parse(JsonString);
       }
-    }, error => {
-      this.buttonsDisabled = false;
-    })
+
+      let found = false;
+      for (let i = 0; i < 5; i++) {
+        if (found) {
+          break;
+        }
+        for (let j = 0; j < 10; j++) {
+          if (found) {
+            break;
+          }
+          for (let k = 0; k < 20; k++) {
+            if (found) {
+              break;
+            }
+            if (!!(this.parkingSpaces) && this.parkingSpaces[i][j][k]) {
+              if (this.parkingSpaces) {
+                this.parkingSpaces[i][j][k] = true;
+                console.log("Found spot at ", i, j, k)
+              }
+              found = true;
+            }
+          }
+        }
+      }
+      let dialogRef = this.dialog.open(TicketCreatedComponent, {
+        width: '75%',
+        data: {
+          name: this.reservation.name,
+          make: this.reservation.make,
+          model: this.reservation.model,
+          color: this.reservation.color,
+          plate: this.reservation.licensePlate,
+          date1: this.reservation.startDate,
+          date2: this.reservation.endDate,
+          oneDay: this.reservation.oneDay,
+
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.buttonsDisabled = true;
+        } else {
+          this.buttonsDisabled = false;
+        }
+      }, error => {
+        this.buttonsDisabled = false;
+      })
 
     }
   }
+
   cancel() {
     this.buttonsDisabled = true;
 
