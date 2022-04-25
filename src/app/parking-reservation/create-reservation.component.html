@@ -29,7 +29,7 @@
 
         <mat-form-field class="license">
           <input [(ngModel)]="reservation.licensePlate" class="input-box" matInput matTooltip="Your car's license plate"
-                placeholder="License plate" required minlength ="7" maxlength="7" (change)="checkRequirements()">
+                placeholder="License plate(no spaces or dashes)" required minlength ="7" maxlength="7" (change)="checkRequirements()">
         </mat-form-field>
       </div>
       <div class="input-row">
