@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Reservation} from '../app.component';
 import {CantCreateComponent} from './cant-create/cant-create.component';
 import {TicketCreatedComponent} from "./ticket-created/ticket-created.component";
+import {CantCreateFullComponent} from "./cant-create-full/cant-create-full.component";
 
 @Component({
   selector: 'app-parking-reservation',
@@ -128,32 +129,38 @@ export class CreateReservationComponent implements OnInit {
           }
         }
       }
-      let dialogRef = this.dialog.open(TicketCreatedComponent, {
-        width: '75%',
-        data: {
-          name: this.reservation.name,
-          make: this.reservation.make,
-          model: this.reservation.model,
-          color: this.reservation.color,
-          plate: this.reservation.licensePlate,
-          spotNumber: this.reservation.spotNumber,
-          date1: this.reservation.startDate,
-          date2: this.reservation.endDate,
-          oneDay: this.reservation.oneDay,
+      if (found) {
+        let dialogRef = this.dialog.open(TicketCreatedComponent, {
+          width: '75%',
+          data: {
+            name: this.reservation.name,
+            make: this.reservation.make,
+            model: this.reservation.model,
+            color: this.reservation.color,
+            plate: this.reservation.licensePlate,
+            spotNumber: this.reservation.spotNumber,
+            date1: this.reservation.startDate,
+            date2: this.reservation.endDate,
+            oneDay: this.reservation.oneDay,
 
-        }
-      });
+          }
+        });
 
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          localStorage.setItem('dataSource', JSON.stringify(this.parkingSpaces));
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            localStorage.setItem('dataSource', JSON.stringify(this.parkingSpaces));
+            this.buttonsDisabled = false;
+          } else {
+            this.buttonsDisabled = false;
+          }
+        }, error => {
           this.buttonsDisabled = false;
-        } else {
-          this.buttonsDisabled = false;
-        }
-      }, error => {
-        this.buttonsDisabled = false;
-      })
+        })
+      } else {
+        let dialogRef = this.dialog.open(CantCreateFullComponent, {
+          width: '75%'
+        });
+      }
 
     }
   }

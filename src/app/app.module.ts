@@ -22,12 +22,11 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {TicketCreatedComponent} from './parking-reservation/ticket-created/ticket-created.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {PrintTicketComponent} from "./parking-reservation/ticket-created/print/print-ticket.component";
-import {
-  ConfirmedTicketComponent
-} from './parking-reservation/ticket-created/confirmed-ticket/confirmed-ticket.component';
+import {ConfirmedTicketComponent} from './parking-reservation/ticket-created/confirmed-ticket/confirmed-ticket.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import {HttpClientModule} from "@angular/common/http";
-import { CantCreateComponent } from './parking-reservation/cant-create/cant-create.component';
+import {CantCreateComponent} from './parking-reservation/cant-create/cant-create.component';
+import {CantCreateFullComponent} from "./parking-reservation/cant-create-full/cant-create-full.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +35,7 @@ import { CantCreateComponent } from './parking-reservation/cant-create/cant-crea
     CreateReservationComponent,
     EditReservationComponent,
     CheckAvailiabilityComponent,
+    CantCreateFullComponent,
     TicketCreatedComponent,
     PrintTicketComponent,
     ConfirmedTicketComponent,
