@@ -6,50 +6,50 @@
   </mat-card-header>
   <hr>
   <mat-card-content>
-    <div class="input-row">
-      <mat-form-field class="input-field">
-        <input [(ngModel)]="reservation.name" class="input-box" matInput matTooltip="Your name" placeholder="Name">
-      </mat-form-field>
+      <div class="input-row">
+        <mat-form-field class="input-field">
+          <input [(ngModel)]="reservation.name" class="input-box" matInput matTooltip="Your name" placeholder="Name" required minlength="1">
+        </mat-form-field>
 
-      <mat-form-field class="input-field">
-        <input [(ngModel)]="reservation.make" class="input-box" matInput matTooltip="Your car's make (eg. Toyota, GMC, Jeep)"
-               placeholder="Make">
-      </mat-form-field>
+        <mat-form-field class="input-field">
+          <input [(ngModel)]="reservation.make" class="input-box" matInput matTooltip="Your car's make (eg. Toyota, GMC, Jeep)"
+                placeholder="Make" required minlength="1">
+        </mat-form-field>
 
-      <mat-form-field class="input-field">
-        <input [(ngModel)]="reservation.model" class="input-box" matInput
-               matTooltip="Your car's model (eg. Camry, Wrangler, F150)" placeholder="Model">
-      </mat-form-field>
-    </div>
+        <mat-form-field class="input-field">
+          <input [(ngModel)]="reservation.model" class="input-box" matInput
+                matTooltip="Your car's model (eg. Camry, Wrangler, F150)" placeholder="Model" required minlength="1">
+        </mat-form-field>
+      </div>
 
-    <div class="input-row">
-      <mat-form-field class="input-field">
-        <input [(ngModel)]="reservation.color" class="input-box" matInput matTooltip="Your car's color" placeholder="Color">
-      </mat-form-field>
+      <div class="input-row">
+        <mat-form-field class="input-field">
+          <input [(ngModel)]="reservation.color" class="input-box" matInput matTooltip="Your car's color" placeholder="Color" required minlength="1">
+        </mat-form-field>
 
-      <mat-form-field class="license">
-        <input [(ngModel)]="reservation.licensePlate" class="input-box" matInput matTooltip="Your car's license plate"
-               placeholder="License plate">
-      </mat-form-field>
-    </div>
-    <div class="input-row">
-      <span class="one-day-toggle">
-        <mat-label>One Day</mat-label>
-        <mat-slide-toggle [(ngModel)]="reservation.oneDay" color="primary"></mat-slide-toggle>
-      </span>
-      <mat-form-field class="input-field">
-        <mat-label>Choose a date</mat-label>
-        <input [(ngModel)]="reservation.startDate" [matDatepicker]="picker1" matInput>
-        <mat-datepicker-toggle [for]="picker1" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field class="input-field">
-        <mat-label>Choose a date</mat-label>
-        <input [(ngModel)]="reservation.endDate" [disabled]="reservation.oneDay" [matDatepicker]="picker2" matInput>
-        <mat-datepicker-toggle [disabled]="reservation.oneDay" [for]="picker2" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #picker2 [disabled]="reservation.oneDay"></mat-datepicker>
-      </mat-form-field>
-    </div>
+        <mat-form-field class="license">
+          <input [(ngModel)]="reservation.licensePlate" class="input-box" matInput matTooltip="Your car's license plate"
+                placeholder="License plate" required minlength ="7" maxlength="7" (change)="checkRequirements()">
+        </mat-form-field>
+      </div>
+      <div class="input-row">
+        <span class="one-day-toggle">
+          <mat-label>One Day</mat-label>
+          <mat-slide-toggle [(ngModel)]="reservation.oneDay" color="primary"></mat-slide-toggle>
+        </span>
+        <mat-form-field class="input-field">
+          <mat-label>Choose a date</mat-label>
+          <input [(ngModel)]="reservation.startDate" [matDatepicker]="picker1" matInput required>
+          <mat-datepicker-toggle [for]="picker1" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="input-field">
+          <mat-label>Choose a date</mat-label>
+          <input [(ngModel)]="reservation.endDate" [disabled]="reservation.oneDay" [matDatepicker]="picker2" matInput>
+          <mat-datepicker-toggle [disabled]="reservation.oneDay" [for]="picker2" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker2 [disabled]="reservation.oneDay"></mat-datepicker>
+        </mat-form-field>
+      </div>
   </mat-card-content>
   <hr>
   <mat-card-actions class="card-actions">

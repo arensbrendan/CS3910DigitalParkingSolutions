@@ -27,6 +27,7 @@ import {
 } from './parking-reservation/ticket-created/confirmed-ticket/confirmed-ticket.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import {HttpClientModule} from "@angular/common/http";
+import { CantCreateComponent } from './parking-reservation/cant-create/cant-create.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {HttpClientModule} from "@angular/common/http";
     CheckAvailiabilityComponent,
     TicketCreatedComponent,
     PrintTicketComponent,
-    ConfirmedTicketComponent
+    ConfirmedTicketComponent,
+    CantCreateComponent
   ],
   imports: [
     BrowserModule,

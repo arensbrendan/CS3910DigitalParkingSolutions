@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import { Reservation } from '../app.component';
+import { CantCreateComponent } from './cant-create/cant-create.component';
 import {TicketCreatedComponent} from "./ticket-created/ticket-created.component";
 
 @Component({
@@ -18,7 +19,7 @@ export class CreateReservationComponent implements OnInit {
     model: "",
     oneDay: true,
     startDate: undefined,
-    spotNumber: 0,
+    spotNumber: 87,
     name: ""
   };
 
@@ -29,6 +30,14 @@ export class CreateReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  checkRequirements(){
+    if(this.reservation.licensePlate.length == 7 && this.reservation.startDate != undefined && this.reservation.name.length < 1 && this.reservation.color.length < 1
+       && this.reservation.make.length < 1 && this.reservation.model.length < 1)
+      return false;
+    else
+      return true;
   }
 
   dateToString(date: any): String {
@@ -57,6 +66,32 @@ export class CreateReservationComponent implements OnInit {
 
   save() {
     this.buttonsDisabled = true;
+    if(this.checkRequirements()){
+      let dialogRef = this.dialog.open(CantCreateComponent, {
+        width: '75%',
+        data: {
+          name: this.reservation.name,
+          make: this.reservation.make,
+          model: this.reservation.model,
+          color: this.reservation.color,
+          plate: this.reservation.licensePlate,
+          date1: this.reservation.startDate,
+          date2: this.reservation.endDate,
+          oneDay: this.reservation.oneDay,
+        }
+      })
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.buttonsDisabled = true;
+        } else {
+          this.buttonsDisabled = false;
+        }
+      }, error => {
+        this.buttonsDisabled = false;
+      })
+    }
+    else{
     let dialogRef = this.dialog.open(TicketCreatedComponent, {
       width: '75%',
       data: {
@@ -82,8 +117,8 @@ export class CreateReservationComponent implements OnInit {
       this.buttonsDisabled = false;
     })
 
+    }
   }
-
   cancel() {
     this.buttonsDisabled = true;
 
