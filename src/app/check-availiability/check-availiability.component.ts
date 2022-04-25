@@ -39,6 +39,30 @@ export class CheckAvailiabilityComponent implements OnInit {
     }
   }
 
+  getSpotNumber(i: number, j: number, k: number): string {
+    let returnString = '';
+    switch (i) {
+      case  0:
+        returnString += 'A';
+        break;
+      case  1:
+        returnString += 'B';
+        break;
+      case  2:
+        returnString += 'C';
+        break;
+      case  3:
+        returnString += 'D';
+        break;
+      case  4:
+        returnString += 'E';
+        break;
+      default:
+        returnString += "Z";
+    }
+    returnString += j.toString();
+    returnString += (k >= 10 ? k.toString() : "0" + k.toString());
+    return returnString;
 
-
+  }
 }

@@ -6,10 +6,12 @@
   <mat-card-content class="center">
     <mat-tab-group>
       <mat-tab *ngFor="let floor of parkingSpaces; let i = index" label="Floor {{i+1}}">
-        <div *ngFor="let row of floor; let odd = odd; let even = even">
-          <mat-icon *ngFor="let space of row" [class.car-icon-even]="even" [class.car-icon-odd]="odd"
-                    [class.show]="space" class="car-icon">directions_car
-          </mat-icon>
+        <div *ngFor="let row of floor; let odd = odd; let even = even; let j = index" class="row">
+          <span *ngFor="let space of row; let k = index" class="space">
+            <span *ngIf="odd" class="mono">{{getSpotNumber(i, j, k)}}</span>
+            <mat-icon [class.car-icon-even]="even" [class.car-icon-odd]="odd" [class.show]="!space" class="car-icon">directions_car</mat-icon>
+            <span *ngIf="even" class="mono">{{getSpotNumber(i, j, k)}}</span>
+          </span>
         </div>
       </mat-tab>
     </mat-tab-group>
