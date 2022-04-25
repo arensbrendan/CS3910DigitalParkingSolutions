@@ -12,9 +12,11 @@
             <mat-icon [class.car-icon-even]="even" [class.car-icon-odd]="odd" [class.show]="!space" class="car-icon">directions_car</mat-icon>
             <span *ngIf="even" class="mono">{{getSpotNumber(i, j, k)}}</span>
           </span>
+          <mat-label class="row-label"> Row {{j + 1}}</mat-label>
         </div>
       </mat-tab>
     </mat-tab-group>
-
   </mat-card-content>
 </mat-card>
+
+<!-- {{floors[i]}}-{{10 * j + z}} -->

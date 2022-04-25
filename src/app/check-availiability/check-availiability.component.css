@@ -21,6 +21,9 @@
 .show {
   color: white;
 }
+.row-label {
+  margin-bottom: 4px;
+}
 
 .space {
   display: flex;
