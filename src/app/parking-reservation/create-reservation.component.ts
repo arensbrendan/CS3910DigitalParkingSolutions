@@ -33,8 +33,8 @@ export class CreateReservationComponent implements OnInit {
   }
 
   checkRequirements(){
-    if(this.reservation.licensePlate.length == 7 && this.reservation.startDate != undefined && this.reservation.name.length < 1 && this.reservation.color.length < 1
-       && this.reservation.make.length < 1 && this.reservation.model.length < 1)
+    if(this.reservation.licensePlate.length == 7 && this.reservation.startDate != undefined && this.reservation.name.length >= 1 && this.reservation.color.length >= 1
+       && this.reservation.make.length >= 1 && this.reservation.model.length >= 1)
       return false;
     else
       return true;
